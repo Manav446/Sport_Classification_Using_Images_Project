@@ -1,0 +1,7 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://drive.google.com/file/d/1FX4zX-79EZuGC4fqGqd5Y7-L6W8a3TwN/view?usp=sharing
+  local_data_file: artifacts/data_ingestion/sport_image_data.zip
+  unzip_dir: artifacts/data_ingestion
