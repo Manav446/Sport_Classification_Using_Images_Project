@@ -1,10 +1,13 @@
 import os
 import zipfile
 import gdown
-from src.logger import logger
 from src.cnnClassifier.utils.common import get_size
 from src.cnnClassifier.entity.config_entity import (DataIngestionConfig)
 from src.cnnClassifier.constants import constants
+
+from src.logger import logging
+
+logger = logging.getLogger("DataIngestion")
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):

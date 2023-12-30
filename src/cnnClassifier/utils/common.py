@@ -11,10 +11,11 @@ import base64
 
 
 
-from src.logger import logger
+from src.logger import logging
 from src.cnnClassifier.constants import constants
 from src.exception import CustomException
 
+logger = logging.getLogger("CommonFile")
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:

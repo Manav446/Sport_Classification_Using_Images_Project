@@ -2,7 +2,6 @@ from src.cnnClassifier.constants import constants
 from src.cnnClassifier.utils.common import read_yaml, create_directories
 from src.cnnClassifier.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig
 from src.exception import CustomException
-from src.logger import logger
 from pathlib import Path
 
 class ConfigurationManager:

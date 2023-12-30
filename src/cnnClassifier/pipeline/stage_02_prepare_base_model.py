@@ -1,8 +1,9 @@
 from src.cnnClassifier.config.configuration import ConfigurationManager
 from src.cnnClassifier.components.prepare_base_model import PrepareBaseModel
 
-from logger import logger
+from logger import logging
 
+logger = logging.getLogger("BaseModelCreationPipeline")
 STAGE_NAME = "Prepare Base Model stage"
 
 class PrepareBaseModelPipeline:

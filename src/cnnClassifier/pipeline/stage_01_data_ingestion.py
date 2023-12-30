@@ -1,9 +1,10 @@
 from src.cnnClassifier.config.configuration import ConfigurationManager
 from src.cnnClassifier.components.data_ingestion import DataIngestion
-from logger import logger
+from logger import logging
 
 STAGE_NAME = "Data Ingestion stage"
 
+logger = logging.getLogger("DataIngestionPipeline")
 
 class DataIngestionTrainingPipeline:
     def __init__(self):

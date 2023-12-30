@@ -1,12 +1,15 @@
 import os
 import zipfile
 import gdown
-from src.logger import logger
 from src.cnnClassifier.utils.common import *
 from src.cnnClassifier.entity.config_entity import PrepareBaseModelConfig
 from src.cnnClassifier.constants import constants
 
 import tensorflow as tf
+
+from src.logger import logging
+
+logger = logging.getLogger("BaseModelPrepration")
 
 class PrepareBaseModel:
     def __init__(self, config: PrepareBaseModelConfig):

@@ -1,8 +1,10 @@
 import sys
 
-from src.logger import logger
+from src.logger import logging
 from src.exception import CustomException
 from src.cnnClassifier.pipeline import (stage_01_data_ingestion, stage_02_prepare_base_model)
+
+logger = logging.getLogger("MainFile")
 
 STAGE_NAME = "Data Ingestion stage"
 try:
