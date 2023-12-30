@@ -1,8 +1,9 @@
 from src.cnnClassifier.constants import constants
 from src.cnnClassifier.utils.common import read_yaml, create_directories
-from src.cnnClassifier.entity.config_entity import DataIngestionConfig
+from src.cnnClassifier.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig
 from src.exception import CustomException
 from src.logger import logger
+from pathlib import Path
 
 class ConfigurationManager:
     def __init__(
@@ -30,3 +31,19 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    def prepare_base_model(self) -> PrepareBaseModelConfig:
+        config = self.config.prepare_base_model
+        
+        prepare_base_model_config = PrepareBaseModelConfig(
+            root_dir=Path(config.root_dir),
+            base_model_path=Path(config.base_model_path),
+            updated_base_model_path=Path(config.updated_base_model_path),
+            params_include_top=self.params.INCLUDE_TOP,
+            params_learning_rate=self.params.LEARNING_RATE,
+            params_weights=self.params.WEIGHTS,
+            params_classes=self.params.CLASSES,
+            parmas_image_size=self.params.IMAGE_SIZE
+        )
+
+        return prepare_base_model_config 

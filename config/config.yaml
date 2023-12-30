@@ -5,3 +5,12 @@ data_ingestion:
   source_URL: https://drive.google.com/file/d/1FX4zX-79EZuGC4fqGqd5Y7-L6W8a3TwN/view?usp=sharing
   local_data_file: artifacts/data_ingestion/sport_image_data.zip
   unzip_dir: artifacts/data_ingestion
+
+prepare_base_model:
+  root_dir: artifacts/prepare_base_model
+  base_model_path: artifacts/prepare_base_model/base_model.h5
+  updated_base_model_path: artifacts/prepare_base_model/base_model_updated.h5
+
+training:
+  root_dir: artifacts/training
+  trained_model_path: artifacts/training/model.h5
