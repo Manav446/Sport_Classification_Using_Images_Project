@@ -16,11 +16,18 @@ class PrepareBaseModel:
         self.config = config
     
     def get_base_model(self):
-        self.model = tf.keras.applications.vgg16.VGG16(
+        # self.model = tf.keras.applications.vgg16.VGG16(
+        #     weights=self.config.params_weights,
+        #     input_shape=self.config.parmas_image_size,
+        #     include_top=self.config.params_include_top
+        # )
+
+        self.model = tf.keras.applications.efficientnet.EfficientNetB0(
             weights=self.config.params_weights,
             input_shape=self.config.parmas_image_size,
             include_top=self.config.params_include_top
         )
+
         self.save_model(
             path = self.config.base_model_path,
             model = self.model
@@ -35,19 +42,29 @@ class PrepareBaseModel:
             for layer in model.layers[:-freeze_till]:
                 model.trainable = False
 
-        flatten_in = tf.keras.layers.Flatten()(model.output)
-        prediction = tf.keras.layers.Dense(
-            units=classes,
+        preprocessed_input = tf.keras.applications.efficientnet.preprocess_input(
+            tf.keras.layers.Input(shape=(224, 224, 3))
+        )
+        efficient_X = model(preprocessed_input)
+        efficient_X = tf.keras.layers.GlobalAveragePooling2D()(efficient_X)
+        efficient_X = tf.keras.layers.Dropout(0.2)(efficient_X)
+        efficient_X = tf.keras.layers.Dense(
+            units=512,
+            activation="relu"
+        )(efficient_X)
+        efficient_X = tf.keras.layers.Dropout(0.2)(efficient_X)
+        efficient_X = tf.keras.layers.Dense(
+            units = classes,
             activation="softmax"
-        )(flatten_in)
+        )(efficient_X)
 
         full_model = tf.keras.models.Model(
-            inputs=model.input,
-            outputs=prediction
+            inputs=preprocessed_input,
+            outputs=efficient_X
         )
 
         full_model.compile(
-            optimizer=tf.keras.optimizers.SGD(learning_rate=learning_rate),
+            optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
             loss=tf.keras.losses.CategoricalCrossentropy(),
             metrics=["accuracy"]
         )

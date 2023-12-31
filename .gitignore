@@ -122,14 +122,14 @@ celerybeat.pid
 # Environments
 .env
 .venv
-.sportclassification
+.sportimageclassifier
 env/
 venv/
-sportclassification/
+sportimageclassifier/
 ENV/
 env.bak/
 venv.bak/
-sportclassification.bak/
+sportimageclassifier.bak/
 
 # Spyder project settings
 .spyderproject
