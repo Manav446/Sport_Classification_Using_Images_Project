@@ -6,15 +6,15 @@ from src.cnnClassifier.pipeline import (stage_01_data_ingestion, stage_02_prepar
 
 logger = logging.getLogger("MainFile")
 
-# STAGE_NAME = "Data Ingestion stage"
-# try:
-#    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
-#    data_ingestion = stage_01_data_ingestion.DataIngestionTrainingPipeline()
-#    data_ingestion.main()
-#    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-# except Exception as e:
-#    logger.exception(e)
-#    raise CustomException(e, sys)
+STAGE_NAME = "Data Ingestion stage"
+try:
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
+   data_ingestion = stage_01_data_ingestion.DataIngestionTrainingPipeline()
+   data_ingestion.main()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+   logger.exception(e)
+   raise CustomException(e, sys)
 
 STAGE_NAME = "Prepare Base Model stage"
 try:
