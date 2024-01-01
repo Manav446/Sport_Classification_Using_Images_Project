@@ -20,7 +20,7 @@ class PredictionPipeline:
         classes = []
         result = None
         try:
-            model = tf.keras.models.load_model(os.path.join("artifacts/training/model.h5"))
+            model = tf.keras.models.load_model(os.path.join("model", "model.h5"))
         
             logger.info("FileName: {}".format(self.fileName))
             test_image = tf.keras.preprocessing.image.load_img(
