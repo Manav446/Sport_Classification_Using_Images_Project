@@ -20,6 +20,7 @@ In the world of sports, identifying the type of sport from images can enhance va
 - EfficientNetB0
 - OpenCV (for image processing)
 - Flask (or relevant framework for the web interface)
+- Matplotlib (for visualization)
 
 ## Getting Started
 
