@@ -1,18 +1,35 @@
-# Sport_Classification_Using_Images_Project
-Classify any sport using an image.
+# Sports Image Classification with EfficientNetB0
 
-## Workflows
+This repository contains a Convolutional Neural Network (CNN) project designed to classify sports images by predicting the name of the sport depicted. Leveraging the EfficientNetB0 model, this application provides an accurate and efficient solution for sports image recognition.
 
-1. Update config.yaml
-2. Update secrets.yaml [Optional]
-3. Update params.yaml
-4. Update the entity
-5. Update the configuration manager in src config
-6. Update the components
-7. Update the pipeline 
-8. Update the main.py
-9. Update the dvc.yaml
-10. app.py
+## Project Overview
+
+In the world of sports, identifying the type of sport from images can enhance various applications, from content organization to user engagement. This project implements a CNN that processes input images and classifies them into specific sports categories, making it a valuable tool for sports enthusiasts and developers alike.
+
+## Key Features
+
+- **EfficientNetB0 Model**: Utilizes the EfficientNetB0 architecture for high-performance image classification with a smaller footprint, ensuring faster inference and better accuracy.
+- **Image Preprocessing**: Implements essential image preprocessing techniques to enhance model performance.
+- **User-Friendly Interface**: Provides an easy-to-use interface for users to upload images and receive sport predictions.
+- **Visualization**: Displays prediction results along with confidence scores for improved interpretability.
+
+## Technologies Used
+
+- Python
+- TensorFlow/Keras
+- EfficientNetB0
+- OpenCV (for image processing)
+- Flask (or relevant framework for the web interface)
+
+## Getting Started
+
+To get started with this project, clone the repository and follow the installation instructions. Detailed usage guidelines are provided to help you upload images and receive predictions.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for enhancements or new features, please open an issue or submit a pull request.
+
+---
 
 # How to run?
 ### STEPS:
@@ -47,132 +64,3 @@ Now,
 ```bash
 open up you local host and port
 ```
-
-
-## MLflow
-
-- [Documentation](https://mlflow.org/docs/latest/index.html)
-
-- [MLflow tutorial](https://youtu.be/qdcHHrsXA48?si=bD5vDS60akNphkem)
-
-##### cmd
-- mlflow ui
-
-### dagshub
-[dagshub](https://dagshub.com/)
-
-MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/Kidney-Disease-Classification-MLflow-DVC.mlflow \
-MLFLOW_TRACKING_USERNAME=entbappy \
-MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0 \
-python script.py
-
-Run this to export as env variables:
-
-```bash
-
-export MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/Kidney-Disease-Classification-MLflow-DVC.mlflow
-
-export MLFLOW_TRACKING_USERNAME=entbappy 
-
-export MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0
-
-```
-
-
-### DVC cmd
-
-1. dvc init
-2. dvc repro
-3. dvc dag
-
-
-## About MLflow & DVC
-
-MLflow
-
- - Its Production Grade
- - Trace all of your expriements
- - Logging & taging your model
-
-
-DVC 
-
- - Its very lite weight for POC only
- - lite weight expriements tracker
- - It can perform Orchestration (Creating Pipelines)
-
-
-
-# AWS-CICD-Deployment-with-Github-Actions
-
-## 1. Login to AWS console.
-
-## 2. Create IAM user for deployment
-
-	#with specific access
-
-	1. EC2 access : It is virtual machine
-
-	2. ECR: Elastic Container registry to save your docker image in aws
-
-
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Lauch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 566373416292.dkr.ecr.us-east-1.amazonaws.com/chicken
-
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-# 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
-
